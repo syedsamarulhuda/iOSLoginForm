@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -23,8 +24,14 @@ class ViewController: UIViewController {
     
     
    override func viewDidAppear(animated: Bool) {
-     
-        self.performSegueWithIdentifier("loginView", sender: self );
+    
+    let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("IS_LOGGED_IN");
+    
+    if(!isUserLoggedIn){
+      self.performSegueWithIdentifier("loginView", sender: self );
+    }else{
+         self.performSegueWithIdentifier("homeView", sender: self );
+     }
     }
 
 }
